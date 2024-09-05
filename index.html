@@ -11,22 +11,23 @@
     <div class="container">
       <div class="grid">
       
-      <div class="bento-item" style="grid-column: span 1; grid-row: span 1;">
+      <div class="bento-item" id="one" style="grid-column: span 1; grid-row: span 1;">
       <img src="assets/me.png" id="profile-picture" alt="">
       </div>
   
-      <div class="bento-item" style="grid-column: span 3; grid-row: span 1; font-size: 3rem; ">
+      <div class="bento-item" id="two" style="grid-column: span 3; grid-row: span 1; font-size: 3rem; ">
         Joost
       </div>
   
-      <div class="bento-item" style="grid-column: span 2; grid-row: span 1;">
+      <div class="bento-item" id="three" style="grid-column: span 2; grid-row: span 1;">
         <ul>
           <li>🔊 Techno / Metal</li>
-          <li>🎮 Gaming</li>
+          <li>🥷🏼 Urbexen</li>
+          <li>🎮 Gamen</li>
         </ul>
       </div>
   
-      <div class="bento-item" style="grid-column: span 2; grid-row: span 1;">
+      <div class="bento-item" id="four" style="grid-column: span 2; grid-row: span 1;">
         <ul>
           <li>🎨 Design opleiding</li>
           <li>🧑‍💻 ICT achtergrond</li>
@@ -38,9 +39,33 @@
 
     <script>
       var picture = document.getElementById('profile-picture');
+      var rotation = 0;
 
-      picture.addEventListener("click", function() {
-       picture.setAttribute('style', 'transform: rotate(90deg)');
+      picture.addEventListener("mouseover", function() {
+        rotation += 90;
+        picture.style.transform = 'rotate('+ rotation +'deg)';
+      });
+
+      var three = document.getElementById('three');
+      var four = document.getElementById('four');
+
+      three.addEventListener("mouseover", function(){
+        three.style.cssText = `
+        grid-column: span 3; 
+        transition: 0.2sec;
+        `
+        four.style.cssText = `
+        grid-column: span 1;
+        `
+      });
+
+      four.addEventListener("mouseover", function(){
+        three.style.cssText = `
+        grid-column: span 1; 
+        `
+        four.style.cssText = `
+        grid-column: span 3;
+        `
       });
     </script>
 
